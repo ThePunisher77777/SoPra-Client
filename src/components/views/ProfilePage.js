@@ -24,7 +24,7 @@ const ProfilePage = () => {
             }
         }
         fetchData();
-    }, [history]);
+    }, [history, params.userId]);
 
     let displayUserInformation;
     displayUserInformation = () => (
