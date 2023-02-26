@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import {Redirect, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {Button} from "../ui/Button";
-import ProfilePage from "./ProfilePage";
 
 const ProfileCard = ({user}) => {
     const history = useHistory();

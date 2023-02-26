@@ -4,7 +4,6 @@ import {useHistory, useParams} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import {Spinner} from "../ui/Spinner";
 import {Button} from "../ui/Button";
-//import "styles/views/Game.scss";
 
 
 const ProfilePage = () => {
@@ -26,11 +25,12 @@ const ProfilePage = () => {
 
     useEffect(() => {
         fetchData();
-    }, [])
+    }, [params])
 
-    const displayUserInformation = () => (
+    let displayUserInformation;
+    displayUserInformation = () => (
         <div>
-            {!user && <Spinner />}
+            {!user && <Spinner/>}
             {user &&
                 <>
                     <div>Username: {user.username}</div>
@@ -40,11 +40,11 @@ const ProfilePage = () => {
                 </>
             }
         </div>
-    )
+    );
 
     useEffect(() => {
         displayUserInformation();
-    }, [])
+    }, [displayUserInformation])
 
     return (
         <BaseContainer className="game container">
