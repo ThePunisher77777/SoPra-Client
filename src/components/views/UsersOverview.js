@@ -65,7 +65,7 @@ const UsersOverview= () => {
         }
 
         fetchData();
-    }, []);
+    }, [history]);
 
     let content = <Spinner/>;
 
