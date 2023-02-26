@@ -12,20 +12,19 @@ const ProfilePage = () => {
 
     const [user, setUser] = useState(null);
 
-    async function fetchData() {
-        try {
-            const response = await api.get(`/users/${params.userId}`);
-            setUser(response.data);
-        } catch (error) {
-            console.log(error.message);
-        }
-        console.log('executed');
-        console.log(user);
-    }
+
 
     useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await api.get(`/users/${params.userId}`);
+                setUser(response.data);
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
         fetchData();
-    }, [params])
+    }, [history]);
 
     let displayUserInformation;
     displayUserInformation = () => (
