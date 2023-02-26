@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {api, handleError} from 'helpers/api';
 import User from 'models/User';
-import {Redirect, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {Button} from 'components/ui/Button';
 import 'styles/views/Login.scss';
 import BaseContainer from "components/ui/BaseContainer";
@@ -12,22 +12,27 @@ const Registration = props => {
   const [username, setUsername] = useState(null);
   const [name, setName] = useState(null);
   const [password, setPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
 
   const register = async () => {
-    try {
-      const requestBody = JSON.stringify({username, name, password});
-      const response = await api.post('/users', requestBody);
+    if(password !== confirmPassword) {
+      alert('Your passwords do not match');
+    } else {
+      try {
+        const requestBody = JSON.stringify({username, name, password});
+        const response = await api.post('/users', requestBody);
 
-      // Get the returned user and update a new object.
-      const user = new User(response.data);
+        // Get the returned user and update a new object.
+        const user = new User(response.data);
 
-      // Store the token into the local storage.
-      localStorage.setItem('token', user.token);
+        // Store the token into the local storage.
+        localStorage.setItem('token', user.token);
 
-      // Login successfully worked --> navigate to the route /game in the GameRouter
-      history.push(`/game`);
-    } catch (error) {
-      alert(`Something went wrong during the login: \n${handleError(error)}`);
+        // Login successfully worked --> navigate to the route /game in the GameRouter
+        history.push(`/game`);
+      } catch (error) {
+        alert(`Something went wrong during the login: \n${handleError(error)}`);
+      }
     }
   };
 
@@ -52,6 +57,12 @@ const Registration = props => {
             label="Password"
             value={password}
             onChange={p => setPassword(p)}
+          />
+          <FormField
+              type="password"
+              label="Confirm Password"
+              value={confirmPassword}
+              onChange={cp => setConfirmPassword(cp)}
           />
           <div className="login button-container">
             <Button
