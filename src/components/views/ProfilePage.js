@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {api} from 'helpers/api';
 import {useHistory, useParams} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
