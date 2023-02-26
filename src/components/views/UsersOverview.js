@@ -5,7 +5,7 @@ import {Button} from 'components/ui/Button';
 import {useHistory} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import ProfileCard from "components/views/ProfileCard";
-//import "styles/views/Game.scss";
+import "../../styles/views/Game.scss";
 
 
 const UsersOverview= () => {
@@ -73,9 +73,11 @@ const UsersOverview= () => {
         if (users) {
             content = (
                 <div className="game">
+                    <ul className="game user-list">
                         {users.map(user => (
                             <ProfileCard user={user} key={user.id}/>
                         ))}
+                    </ul>
                     <Button
                         width="100%"
                         onClick={() => logout()}
