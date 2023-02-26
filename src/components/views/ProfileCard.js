@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {useHistory, useParams} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {Button} from "../ui/Button";
 
 const ProfileCard = ({user}) => {

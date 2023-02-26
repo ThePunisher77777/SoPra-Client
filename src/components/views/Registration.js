@@ -3,7 +3,7 @@ import {api, handleError} from 'helpers/api';
 import User from 'models/User';
 import {useHistory} from 'react-router-dom';
 import {Button} from 'components/ui/Button';
-import 'styles/views/Login.scss';
+import 'styles/views/Registration.scss';
 import BaseContainer from "components/ui/BaseContainer";
 import FormField from "components/views/FormField";
 
@@ -38,8 +38,8 @@ const Registration = props => {
 
   return (
     <BaseContainer>
-      <div className="login container">
-        <div className="login form">
+      <div className="registration container">
+        <div className="registration form">
           <FormField
             type="text"
             label="Username"
@@ -64,7 +64,7 @@ const Registration = props => {
               value={confirmPassword}
               onChange={cp => setConfirmPassword(cp)}
           />
-          <div className="login button-container">
+          <div className="registration button-container">
             <Button
               disabled={!username || !password}
               width="100%"
