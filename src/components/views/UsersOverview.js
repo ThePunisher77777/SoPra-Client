@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {api, handleError} from 'helpers/api';
 import {Spinner} from 'components/ui/Spinner';
 import {Button} from 'components/ui/Button';
-import {useHistory, useLocation} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import ProfileCard from "components/views/ProfileCard";
 import "../../styles/views/Game.scss";
@@ -61,7 +61,7 @@ const UsersOverview = (user) => {
         }
 
         fetchData();
-    }, [history]);
+    }, [history, user]);
 
     let content = <Spinner/>;
 

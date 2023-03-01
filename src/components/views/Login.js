@@ -34,7 +34,7 @@ const Login = () => {
             // Login successfully worked --> navigate to the route /game in the GameRouter
             history.push({
                 pathname: `/users`,
-                state: { [user] : user }
+                state: { user : user }
             });
         } catch (error) {
             alert(`Something went wrong during the login: \n${handleError(error)}`);
