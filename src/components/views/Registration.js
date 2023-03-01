@@ -19,8 +19,17 @@ const Registration = props => {
       alert('Your passwords do not match');
     } else {
       try {
-        const requestBody = JSON.stringify({username, name, password});
-        const response = await api.post('/users', requestBody);
+        // const requestBody = JSON.stringify({username, name, password});
+        // const response = await api.post('/users', requestBody);
+
+        const response = await api.post('/users', {},
+            {
+              headers: {
+                username: username,
+                name: name,
+                password: password
+              }
+            });
 
         // Get the returned user and update a new object.
         const user = new User(response.data);
