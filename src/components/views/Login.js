@@ -7,7 +7,7 @@ import 'styles/views/Login.scss';
 import BaseContainer from "components/ui/BaseContainer";
 import FormField from "components/views/FormField";
 
-const Login = props => {
+const Login = () => {
     const history = useHistory();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -32,7 +32,10 @@ const Login = props => {
             localStorage.setItem('token', user.token);
 
             // Login successfully worked --> navigate to the route /game in the GameRouter
-            history.push(`/users`);
+            history.push({
+                pathname: `/users`,
+                state: { [user] : user }
+            });
         } catch (error) {
             alert(`Something went wrong during the login: \n${handleError(error)}`);
             history.push('/login');

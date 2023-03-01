@@ -11,6 +11,7 @@ const Registration = props => {
   const history = useHistory();
   const [username, setUsername] = useState(null);
   const [name, setName] = useState(null);
+  const [birthday, setBirthday] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
 
@@ -19,20 +20,19 @@ const Registration = props => {
       alert('Your passwords do not match');
     } else {
       try {
-        // const requestBody = JSON.stringify({username, name, password});
+        const requestBody = JSON.stringify({ username, name, birthday });
         // const response = await api.post('/users', requestBody);
 
-        const response = await api.post('/users', {},
+        const response = await api.post('/users', requestBody,
             {
               headers: {
-                username: username,
-                name: name,
                 password: password
               }
             });
 
-        // Get the returned user and update a new object.
+        // Get the returned user and update a new object
         const user = new User(response.data);
+        user.birthday = new Date(user.birthday);
 
         // Store the token into the local storage.
         localStorage.setItem('token', user.token);
@@ -60,6 +60,12 @@ const Registration = props => {
             label="Name"
             value={name}
             onChange={n => setName(n)}
+          />
+          <FormField
+              type="date"
+              label="Birthday"
+              value={birthday}
+              onChange={bd => setBirthday(bd)}
           />
           <FormField
             type="password"

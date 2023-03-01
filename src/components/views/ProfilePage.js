@@ -12,8 +12,6 @@ const ProfilePage = () => {
 
     const [user, setUser] = useState(null);
 
-
-
     useEffect(() => {
         async function fetchData() {
             try {
@@ -23,23 +21,26 @@ const ProfilePage = () => {
                 console.log(error.message);
             }
         }
+
         fetchData();
     }, [history, params.userId]);
 
     let displayUserInformation;
-    displayUserInformation = () => (
-        <div>
-            {!user && <Spinner/>}
-            {user &&
-                <>
-                    <div>Username: {user.username}</div>
-                    <div>Online Status: {user.status}</div>
-                    <div>Creation Date: {user.creationDate}</div>
-                    <div>Birthday: {user.status}</div>
-                </>
-            }
-        </div>
-    );
+    displayUserInformation = () => {
+        return (
+            <div>
+                {!user && <Spinner/>}
+                {user &&
+                    <>
+                        <div>Username: {user.username}</div>
+                        <div>Online Status: {user.status}</div>
+                        <div>Creation Date: {user.creationDate}</div>
+                        <div>Birthday: {user.birthday}</div>
+                    </>
+                }
+            </div>
+        )
+    };
 
     useEffect(() => {
         displayUserInformation();

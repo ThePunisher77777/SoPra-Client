@@ -14,7 +14,6 @@ export const UsersOverviewGuard = props => {
   if (localStorage.getItem("token")) {
     return props.children;
   }
-  alert("Please login to access the users overview page");
   return <Redirect to="/login"/>;
 };
 

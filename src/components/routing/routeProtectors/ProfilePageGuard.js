@@ -14,7 +14,6 @@ export const ProfilePageGuard = props => {
   if (localStorage.getItem("token")) {
     return props.children;
   }
-  alert("Please login to access the profile page");
   return <Redirect to="/login"/>;
 };
 
