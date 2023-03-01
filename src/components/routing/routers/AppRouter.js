@@ -6,6 +6,8 @@ import Login from "components/views/Login";
 import Registration from "components/views/Registration";
 import UsersOverview from "../../views/UsersOverview";
 import ProfilePage from "../../views/ProfilePage";
+import {UsersOverviewGuard} from "../routeProtectors/UsersOverviewGuard";
+import {ProfilePageGuard} from "../routeProtectors/ProfilePageGuard";
 
 /**
  * Main router of your application.
@@ -17,34 +19,38 @@ import ProfilePage from "../../views/ProfilePage";
  * Documentation about routing in React: https://reacttraining.com/react-router/web/guides/quick-start
  */
 const AppRouter = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/game">
-          <GameGuard>
-            <GameRouter base="/game"/>
-          </GameGuard>
-        </Route>
-        <Route exact path="/login">
-          <LoginGuard>
-            <Login/>
-          </LoginGuard>
-        </Route>
-        <Route exact path="/registration">
-          <Registration/>
-        </Route>
-        <Route exact path="/users">
-            <UsersOverview />
-        </Route>
-        <Route path="/users/:userId">
-          <ProfilePage />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/users"/>
-        </Route>
-      </Switch>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route path="/game">
+                    <GameGuard>
+                        <GameRouter base="/game"/>
+                    </GameGuard>
+                </Route>
+                <Route exact path="/login">
+                    <LoginGuard>
+                        <Login/>
+                    </LoginGuard>
+                </Route>
+                <Route exact path="/registration">
+                    <Registration/>
+                </Route>
+                <Route exact path="/users">
+                    <UsersOverviewGuard>
+                        <UsersOverview/>
+                    </UsersOverviewGuard>
+                </Route>
+                <Route path="/users/:userId">
+                    <ProfilePageGuard>
+                        <ProfilePage/>
+                    </ProfilePageGuard>
+                </Route>
+                <Route exact path="/">
+                    <Redirect to="/users"/>
+                </Route>
+            </Switch>
+        </BrowserRouter>
+    );
 };
 
 /*
