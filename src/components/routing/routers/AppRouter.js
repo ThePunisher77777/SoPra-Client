@@ -6,8 +6,6 @@ import Login from "components/views/Login";
 import Registration from "components/views/Registration";
 import UsersOverview from "../../views/UsersOverview";
 import ProfilePage from "../../views/ProfilePage";
-import {UsersOverviewGuard} from "../routeProtectors/UsersOverviewGuard";
-import {ProfilePageGuard} from "../routeProtectors/ProfilePageGuard";
 
 /**
  * Main router of your application.
