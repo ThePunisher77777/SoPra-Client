@@ -13,38 +13,48 @@ const ProfilePage = () => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await api.get(`/users/${params.userId}`);
-                setUser(response.data);
-            } catch (error) {
-                console.log(error.message);
+            async function fetchData() {
+                try {
+                    const response = await api.get(`/users/${params.userId}`,
+                        {
+                            headers: {
+                                token: localStorage.getItem('token')
+                            }
+                        });
+                    setUser({...response.data, token: response.headers['token']});
+                } catch (error) {
+                    if (error.response.status === 401) {
+                        history.push('/login');
+                    }
+                }
             }
-        }
 
-        fetchData();
-    }, [history, params.userId]);
+            fetchData();
+        },
+        [history, params.userId]);
 
     let displayUserInformation;
     displayUserInformation = () => {
         return (
-            <div>
-                {!user && <Spinner/>}
-                {user &&
-                    <>
-                        <div>Username: {user.username}</div>
-                        <div>Online Status: {user.status}</div>
-                        <div>Creation Date: {user.creationDate}</div>
-                        <div>Birthday: {user.birthday}</div>
-                    </>
-                }
-            </div>
+            <>
+                <div>
+                    {!user && <Spinner/>}
+                    {user &&
+                        <>
+                            <div>Username: {user.username}</div>
+                            <div>Online Status: {user.status}</div>
+                            <div>Creation Date: {user.creationDate}</div>
+                            <div>Birthday: {user.birthday}</div>
+                        </>
+                    }
+                </div>
+            </>
         )
     };
 
     useEffect(() => {
         displayUserInformation();
-    }, [displayUserInformation])
+    }, [displayUserInformation, user])
 
     return (
         <BaseContainer className="game container">

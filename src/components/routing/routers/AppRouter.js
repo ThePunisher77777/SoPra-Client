@@ -36,14 +36,10 @@ const AppRouter = () => {
                     <Registration/>
                 </Route>
                 <Route exact path="/users">
-                    <UsersOverviewGuard>
-                        <UsersOverview/>
-                    </UsersOverviewGuard>
+                    <UsersOverview/>
                 </Route>
                 <Route path="/users/:userId">
-                    <ProfilePageGuard>
-                        <ProfilePage/>
-                    </ProfilePageGuard>
+                    <ProfilePage/>
                 </Route>
                 <Route exact path="/">
                     <Redirect to="/users"/>

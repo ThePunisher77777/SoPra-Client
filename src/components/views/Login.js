@@ -14,7 +14,6 @@ const Login = () => {
 
     const doLogin = async () => {
         try {
-            // const requestBody = JSON.stringify({username, password});
             const response = await api.post('/login', {},
                 {
                     headers: {
@@ -22,20 +21,10 @@ const Login = () => {
                         password: password
                     }
                 });
-
-            console.log(response.data)
-
-            // Get the returned user and update a new object.
             const user = new User(response.data);
-
-            // Store the token into the local storage.
+            user.token = response.headers['token'];
             localStorage.setItem('token', user.token);
-
-            // Login successfully worked --> navigate to the route /game in the GameRouter
-            history.push({
-                pathname: `/users`,
-                state: { user : user }
-            });
+            history.push('/users');
         } catch (error) {
             alert(`Something went wrong during the login: \n${handleError(error)}`);
             history.push('/login');

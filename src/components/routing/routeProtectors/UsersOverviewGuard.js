@@ -14,6 +14,7 @@ export const UsersOverviewGuard = props => {
   if (localStorage.getItem("token")) {
     return props.children;
   }
+  alert("Please log in to view the users")
   return <Redirect to="/login"/>;
 };
 
