@@ -14,13 +14,8 @@ const Login = () => {
 
     const doLogin = async () => {
         try {
-            const response = await api.post('/login', {},
-                {
-                    headers: {
-                        username: username,
-                        password: password
-                    }
-                });
+            const requestBody = JSON.stringify({username, password})
+            const response = await api.post('/login', requestBody);
             const user = new User(response.data);
             user.token = response.headers['token'];
             localStorage.setItem('token', user.token);

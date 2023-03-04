@@ -40,7 +40,8 @@ const AppRouter = () => {
                     <ProfilePage/>
                 </Route>
                 <Route exact path="/">
-                    <Redirect to="/users"/>
+                    {/*<Redirect to="/users"/>*/}
+                    <Redirect to="/login" />
                 </Route>
             </Switch>
         </BrowserRouter>

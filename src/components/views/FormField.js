@@ -10,7 +10,7 @@ const FormField = props => {
       <input
         type={props.type}
         className="login input"
-        placeholder="enter here.."
+        placeholder={props.placeholder ?? "enter here.."}
         value={props.value}
         onChange={e => props.onChange(e.target.value)}
       />

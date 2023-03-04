@@ -20,20 +20,19 @@ const Registration = props => {
             alert('Your passwords do not match');
         } else {
             try {
-                const requestBody = JSON.stringify({username, name, birthday});
-                const response = await api.post('/users', requestBody,
-                    {
-                        headers: {
-                            password : password
-                        }
-                    });
+                const requestBody = JSON.stringify({username, name, password, birthday});
+                const response = await api.post('/users', requestBody);
 
                 const user = new User(response.data)
                 user.token = response.headers['token'];
                 localStorage.setItem('token', user.token);
                 history.push(`/users`);
             } catch (error) {
-                alert(`Something went wrong during the login: \n${handleError(error)}`);
+                if(error.response.status === 409) {
+                    alert('Username already in use. Please choose another one.')
+                } else {
+                    alert(`Something went wrong during the login: \n${handleError(error)}`);
+                }
             }
         }
     };
@@ -74,7 +73,7 @@ const Registration = props => {
                     />
                     <div className="registration button-container">
                         <Button
-                            disabled={!username || !password}
+                            disabled={!username || !password || !confirmPassword}
                             width="100%"
                             onClick={() => register()}
                         >

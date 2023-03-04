@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react';
 import {api, handleError} from 'helpers/api';
-import {Button} from 'components/ui/Button';
 import {useHistory} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import ProfileCard from "components/views/ProfileCard";
 import "../../styles/views/Game.scss";
 import PropTypes from "prop-types";
+import Logout from "./Logout";
 
 
 const UsersOverview = () => {
@@ -18,20 +18,6 @@ const UsersOverview = () => {
     // a component can have as many state variables as you like.
     // more information can be found under https://reactjs.org/docs/hooks-state.html
     const [users, setUsers] = useState(null);
-
-    const logout = async () => {
-        try {
-            await api.post('/logout', {}, {
-                headers: {
-                    token: localStorage.getItem('token')
-                }
-            });
-            localStorage.removeItem('token');
-            history.push('/login');
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     // the effect hook can be used to react to change in your component.
     // in this case, the effect hook is only run once, the first time the component is mounted
@@ -80,11 +66,6 @@ const UsersOverview = () => {
                             <ProfileCard user={user} key={user.id}/>
                         ))}
                     </ul>
-                    <Button
-                        onClick={() => logout()}
-                    >
-                        Logout
-                    </Button>
                 </div>
             );
         }
@@ -93,6 +74,7 @@ const UsersOverview = () => {
     return (
         <BaseContainer className="game container">
             {showUsers()}
+            <Logout />
         </BaseContainer>
     );
 }

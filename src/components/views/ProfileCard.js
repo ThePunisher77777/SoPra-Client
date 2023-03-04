@@ -6,7 +6,7 @@ const ProfileCard = ({user}) => {
     const history = useHistory();
 
     const showUserProfile = () => {
-        history.push(`/users/${user.id}`);
+        history.push(`/users/` + user.id);
     }
 
     return (
