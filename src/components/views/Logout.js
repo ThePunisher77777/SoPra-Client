@@ -2,7 +2,7 @@ import {api} from "../../helpers/api";
 import {Button} from "../ui/Button";
 import {useHistory} from "react-router-dom";
 
-const Logout = () => {
+const Logout = (className) => {
     const history = useHistory()
 
     const logout = async () => {
@@ -21,6 +21,7 @@ const Logout = () => {
 
     return (
         <Button
+            style={className}
             onClick={() => logout()}
         >
             Logout

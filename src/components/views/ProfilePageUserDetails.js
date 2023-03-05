@@ -2,6 +2,7 @@ import {Spinner} from "../ui/Spinner";
 import {Button} from "../ui/Button";
 import {useHistory} from "react-router-dom";
 import Logout from "./Logout";
+import "../../styles/views/ProfilePageUserDetails.scss";
 
 const ProfilePageUserDetails = ({user, setIsInEditMode, paramsUserId}) => {
     const history = useHistory()
@@ -20,11 +21,14 @@ const ProfilePageUserDetails = ({user, setIsInEditMode, paramsUserId}) => {
                 <div>Online Status: {user.status}</div>
                 <div>Creation Date: {user.creationDate}</div>
                 <div>Birthday: {user.birthday}</div>
-                <Button onClick={() => history.push('/users')}>
-                    Back
-                </Button>
-            </>}
-            <Logout />
+                <div className="navigation">
+                    <Button onClick={() => history.push('/users')}>
+                        Back
+                    </Button>
+                    <Logout/>
+                </div>
+            </>
+            }
         </>
     )
 };

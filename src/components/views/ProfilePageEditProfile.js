@@ -27,7 +27,9 @@ const ProfilePageEditProfile = ({
             setIsInEditMode(false)
             history.push(`/users/${paramsUserId}`)
         } catch (error) {
-
+            if (error.response.status === 400) {
+                alert('Username field must contain a username.')
+            }
         }
     }
 
@@ -50,12 +52,14 @@ const ProfilePageEditProfile = ({
                         value={birthday}
                         onChange={(b) => setBirthday(b)}
                     />
-                    <Button width="100%" onClick={() => history.push('/users')}>
-                        Back
-                    </Button>
-                    <Button width="100%" onClick={() => updateUser()}>
-                        Save
-                    </Button>
+                    <div>
+                        <Button width="100%" onClick={() => history.push('/users')}>
+                            Back
+                        </Button>
+                        <Button width="100%" onClick={() => updateUser()}>
+                            Save
+                        </Button>
+                    </div>
                 </>
                 }
             </div>

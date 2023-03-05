@@ -3,7 +3,7 @@ import {api, handleError} from 'helpers/api';
 import {useHistory} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import ProfileCard from "components/views/ProfileCard";
-import "../../styles/views/Game.scss";
+import "../../styles/views/UsersOverview.scss";
 import PropTypes from "prop-types";
 import Logout from "./Logout";
 
@@ -60,21 +60,19 @@ const UsersOverview = () => {
     const showUsers = () => {
         if (users) {
             return (
-                <div className="game">
-                    <ul className="game user-list">
-                        {users.map(user => (
-                            <ProfileCard user={user} key={user.id}/>
-                        ))}
-                    </ul>
-                </div>
+                <ul className="user-list">
+                    {users.map(user => (
+                        <ProfileCard user={user} key={user.id}/>
+                    ))}
+                </ul>
             );
         }
     }
 
     return (
-        <BaseContainer className="game container">
+        <BaseContainer className="users-overview container">
             {showUsers()}
-            <Logout />
+            <Logout/>
         </BaseContainer>
     );
 }

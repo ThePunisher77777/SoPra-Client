@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import {useHistory} from 'react-router-dom';
 import {Button} from "../ui/Button";
+import "../../styles/views/ProfileCard.scss";
 
 const ProfileCard = ({user}) => {
     const history = useHistory();
@@ -10,11 +11,11 @@ const ProfileCard = ({user}) => {
     }
 
     return (
-        <Button width="100%" onClick={() => showUserProfile()}>
-            <div>
+        <div className="view-profile">
+            <Button width="100%" onClick={() => showUserProfile()}>
                 {user.username} {user.name} {user.id}
-            </div>
-        </Button>
+            </Button>
+        </div>
     )
 };
 
