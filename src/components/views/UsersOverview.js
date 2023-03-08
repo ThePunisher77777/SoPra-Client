@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {api, handleError} from 'helpers/api';
+import {api} from 'helpers/api';
 import {useHistory} from 'react-router-dom';
 import BaseContainer from "components/ui/BaseContainer";
 import ProfileCard from "components/views/ProfileCard";
