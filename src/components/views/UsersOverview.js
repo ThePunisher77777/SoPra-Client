@@ -48,9 +48,6 @@ const UsersOverview = () => {
                 if (error.response.status === 401) {
                     history.push('/login');
                 }
-                console.error(`Something went wrong while fetching the users: \n${handleError(error)}`);
-                console.error("Details:", error);
-                alert("Something went wrong while fetching the users! See the console for details.");
             }
         }
 

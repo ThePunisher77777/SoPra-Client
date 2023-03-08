@@ -21,7 +21,9 @@ const Login = () => {
             localStorage.setItem('token', user.token);
             history.push('/users');
         } catch (error) {
-            alert(`Something went wrong during the login: \n${handleError(error)}`);
+            if(error.response.statusCode === 404) {
+                alert(error.response.message);
+            }
             history.push('/login');
         }
     };
