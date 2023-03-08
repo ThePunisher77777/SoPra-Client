@@ -9,7 +9,7 @@ const ProfilePageUserDetails = ({user, setIsInEditMode }) => {
 
     const renderEditProfileButton = () => {
         return ((localStorage.getItem('token') === user?.token) &&
-            <Button onClick={() => setIsInEditMode(true)}>Edit profile</Button>)
+            <Button width="10rem" onClick={() => setIsInEditMode(true)}>Edit profile</Button>)
     }
 
     return (
@@ -17,12 +17,13 @@ const ProfilePageUserDetails = ({user, setIsInEditMode }) => {
             {!user && <Spinner/>}
             {user && <>
                 {renderEditProfileButton()}
+                <h2>User profile of: {user.username}</h2>
                 <div>Username: {user.username}</div>
                 <div>Online Status: {user.status}</div>
                 <div>Creation Date: {user.creationDate}</div>
                 <div>Birthday: {user.birthday}</div>
                 <div className="navigation">
-                    <Button onClick={() => history.push('/users')}>
+                    <Button width="10rem" onClick={() => history.push('/users')}>
                         Back
                     </Button>
                     <Logout/>

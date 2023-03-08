@@ -35,6 +35,7 @@ const ProfilePageEditProfile = ({
 
     return (
         <>
+            <h2>Edit your profile</h2>
             <div>
                 {!user && <Spinner/>}
                 {user && <>
@@ -53,10 +54,10 @@ const ProfilePageEditProfile = ({
                         onChange={(b) => setBirthday(b)}
                     />
                     <div>
-                        <Button width="100%" onClick={() => history.push('/users')}>
+                        <Button width="10rem" onClick={() => history.push('/users')}>
                             Back
                         </Button>
-                        <Button width="100%" onClick={() => updateUser()}>
+                        <Button width="10rem" onClick={() => updateUser()}>
                             Save
                         </Button>
                     </div>

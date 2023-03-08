@@ -21,7 +21,7 @@ const Login = () => {
             localStorage.setItem('token', user.token);
             history.push('/users');
         } catch (error) {
-            if(error.response.statusCode === 404) {
+            if (error.response.statusCode === 404) {
                 alert(error.response.message);
             }
             history.push('/login');
@@ -32,6 +32,7 @@ const Login = () => {
         <BaseContainer>
             <div className="login container">
                 <div className="login form">
+                    <h2>Login</h2>
                     <FormField
                         type="text"
                         label="Username"
@@ -45,19 +46,23 @@ const Login = () => {
                         onChange={p => setPassword(p)}
                     />
                     <div className="login button-container">
-                        <Button
-                            disabled={!username || !password}
-                            width="100%"
-                            onClick={() => doLogin()}
-                        >
-                            Login
-                        </Button>
-                        <Button
-                            width="100%"
-                            onClick={() => history.push('/registration')}
-                        >
-                            Register
-                        </Button>
+                        <div style={{padding: '0.1em'}}>
+                            <Button
+                                disabled={!username || !password}
+                                width="10rem"
+                                onClick={() => doLogin()}
+                            >
+                                Login
+                            </Button>
+                        </div>
+                        <div style={{padding: '0.1em'}}>
+                            <Button
+                                width="10rem"
+                                onClick={() => history.push('/registration')}
+                            >
+                                Register
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>

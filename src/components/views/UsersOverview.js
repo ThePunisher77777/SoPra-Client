@@ -70,6 +70,7 @@ const UsersOverview = () => {
 
     return (
         <BaseContainer className="users-overview container">
+            <h2>Users Overview</h2>
             {showUsers()}
             <Logout/>
         </BaseContainer>

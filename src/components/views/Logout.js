@@ -21,7 +21,7 @@ const Logout = (className) => {
 
     return (
         <Button
-            style={className}
+            width="10rem"
             onClick={() => logout()}
         >
             Logout

@@ -11,7 +11,6 @@ const Registration = props => {
     const history = useHistory();
     const [username, setUsername] = useState("");
     const [name, setName] = useState("");
-    const [birthday, setBirthday] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -20,7 +19,7 @@ const Registration = props => {
             alert('Your passwords do not match');
         } else {
             try {
-                const requestBody = JSON.stringify({username, name, password, birthday});
+                const requestBody = JSON.stringify({username, name, password});
                 const response = await api.post('/users', requestBody);
 
                 const user = new User(response.data)
@@ -28,7 +27,7 @@ const Registration = props => {
                 localStorage.setItem('token', user.token);
                 history.push(`/users`);
             } catch (error) {
-                if(error.response.status === 409) {
+                if (error.response.status === 409) {
                     alert('Username already in use. Please choose another one.')
                 } else {
                     alert(`Something went wrong during the login: \n${handleError(error)}`);
@@ -41,6 +40,7 @@ const Registration = props => {
         <BaseContainer>
             <div className="registration container">
                 <div className="registration form">
+                    <h2>Registration</h2>
                     <FormField
                         type="text"
                         label="Username"
@@ -52,12 +52,6 @@ const Registration = props => {
                         label="Name"
                         value={name}
                         onChange={n => setName(n)}
-                    />
-                    <FormField
-                        type="date"
-                        label="Birthday"
-                        value={birthday}
-                        onChange={bd => setBirthday(bd)}
                     />
                     <FormField
                         type="password"
@@ -72,19 +66,23 @@ const Registration = props => {
                         onChange={cp => setConfirmPassword(cp)}
                     />
                     <div className="registration button-container">
-                        <Button
-                            disabled={!username || !password || !confirmPassword}
-                            width="100%"
-                            onClick={() => register()}
-                        >
-                            Register
-                        </Button>
-                        <Button
-                            width="100%"
-                            onClick={() => history.push('/login')}
-                        >
-                            Cancel
-                        </Button>
+                        <div style={{padding: '0.1em'}}>
+                            <Button
+                                disabled={!username || !password || !confirmPassword}
+                                width="10rem"
+                                onClick={() => register()}
+                            >
+                                Register
+                            </Button>
+                        </div>
+                        <div style={{padding: '0.1em'}}>
+                            <Button
+                                width="10rem"
+                                onClick={() => history.push('/login')}
+                            >
+                                Cancel
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>

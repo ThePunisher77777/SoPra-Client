@@ -12,8 +12,8 @@ const ProfileCard = ({user}) => {
 
     return (
         <div className="view-profile">
-            <Button width="100%" onClick={() => showUserProfile()}>
-                {user.username} {user.name} {user.id}
+            <Button width="15rem" onClick={() => showUserProfile()}>
+                Username: {user.username} Id: {user.id}
             </Button>
         </div>
     )

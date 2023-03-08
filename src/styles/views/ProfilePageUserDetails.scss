@@ -1,12 +1,7 @@
 @import '../theme';
 
-/* The '&' is a shorthand for the containing element,
-  so for example a '&.user-list' inside .game will compile to
-  .game.user-list
-
-  for more information visit https://sass-lang.com/guide
- */
-
 .navigation {
   padding: 1rem;
+  display: flex;
+  justify-content: center;
 }

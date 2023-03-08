@@ -56,7 +56,6 @@ const ProfilePage = () => {
                 <ProfilePageUserDetails
                     user={user}
                     setIsInEditMode={setIsInEditMode}
-                    paramsUserId={params.userId}
                 />
             }
         </BaseContainer>);
