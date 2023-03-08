@@ -33,6 +33,19 @@ const ProfilePageEditProfile = ({
         }
     }
 
+    const returnToProfile = async () => {
+        await api.get(`/users/` + paramsUserId, {
+            params: {
+                userId: paramsUserId
+            },
+            headers: {
+                token: localStorage.getItem('token')
+            }
+        });
+        setIsInEditMode(false)
+        history.push(`/users/${paramsUserId}`)
+    }
+
     return (
         <>
             <h2>Edit your profile</h2>
@@ -54,7 +67,7 @@ const ProfilePageEditProfile = ({
                         onChange={(b) => setBirthday(b)}
                     />
                     <div>
-                        <Button width="10rem" onClick={() => history.push('/users')}>
+                        <Button width="10rem" onClick={() => returnToProfile()}>
                             Back
                         </Button>
                         <Button width="10rem" onClick={() => updateUser()}>
