@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 import Logout from "./Logout";
 import "../../styles/views/ProfilePageUserDetails.scss";
 
-const ProfilePageUserDetails = ({user, setIsInEditMode, paramsUserId}) => {
+const ProfilePageUserDetails = ({user, setIsInEditMode }) => {
     const history = useHistory()
 
     const renderEditProfileButton = () => {
@@ -13,7 +13,7 @@ const ProfilePageUserDetails = ({user, setIsInEditMode, paramsUserId}) => {
     }
 
     return (
-        <>
+        <div>
             {!user && <Spinner/>}
             {user && <>
                 {renderEditProfileButton()}
@@ -29,7 +29,7 @@ const ProfilePageUserDetails = ({user, setIsInEditMode, paramsUserId}) => {
                 </div>
             </>
             }
-        </>
+        </div>
     )
 };
 

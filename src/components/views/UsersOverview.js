@@ -60,11 +60,13 @@ const UsersOverview = () => {
     const showUsers = () => {
         if (users) {
             return (
-                <ul className="user-list">
-                    {users.map(user => (
-                        <ProfileCard user={user} key={user.id}/>
-                    ))}
-                </ul>
+                <div className="game">
+                    <ul className="game user-list">
+                        {users.map(user => (
+                            <ProfileCard user={user} key={user.id}/>
+                        ))}
+                    </ul>
+                </div>
             );
         }
     }
