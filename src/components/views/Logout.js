@@ -2,7 +2,7 @@ import {api} from "../../helpers/api";
 import {Button} from "../ui/Button";
 import {useHistory} from "react-router-dom";
 
-const Logout = (className) => {
+const Logout = () => {
     const history = useHistory()
 
     const logout = async () => {

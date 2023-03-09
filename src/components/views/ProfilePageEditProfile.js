@@ -5,6 +5,7 @@ import {api} from "../../helpers/api";
 import {useHistory} from "react-router-dom";
 import Logout from "./Logout";
 import "../../styles/views/ProfilePageEditProfile.scss";
+import BaseContainer from "../ui/BaseContainer";
 
 const ProfilePageEditProfile = ({
                                     user,
@@ -51,7 +52,7 @@ const ProfilePageEditProfile = ({
     }
 
     return (
-        <>
+        <BaseContainer className="users-overview container">
             <h2>Edit your profile</h2>
             <div className="edit-user-details">
                 {!user && <Spinner/>}
@@ -82,7 +83,7 @@ const ProfilePageEditProfile = ({
                 }
             </div>
             <Logout/>
-        </>
+        </BaseContainer>
     )
 };
 
