@@ -4,6 +4,7 @@ import {Button} from "../ui/Button";
 import {api} from "../../helpers/api";
 import {useHistory} from "react-router-dom";
 import Logout from "./Logout";
+import "../../styles/views/ProfilePageEditProfile.scss";
 
 const ProfilePageEditProfile = ({
                                     user,
@@ -30,6 +31,9 @@ const ProfilePageEditProfile = ({
             if (error.response.status === 400) {
                 alert('Username field must contain a username.')
             }
+            if (error.response.status === 409) {
+                alert('Username already taken.')
+            }
         }
     }
 
@@ -49,7 +53,7 @@ const ProfilePageEditProfile = ({
     return (
         <>
             <h2>Edit your profile</h2>
-            <div>
+            <div className="edit-user-details">
                 {!user && <Spinner/>}
                 {user && <>
                     <FormField
@@ -66,7 +70,7 @@ const ProfilePageEditProfile = ({
                         value={birthday}
                         onChange={(b) => setBirthday(b)}
                     />
-                    <div>
+                    <div className="navigation">
                         <Button width="10rem" onClick={() => returnToProfile()}>
                             Back
                         </Button>

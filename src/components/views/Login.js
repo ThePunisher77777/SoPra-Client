@@ -21,8 +21,8 @@ const Login = () => {
             localStorage.setItem('token', user.token);
             history.push('/users');
         } catch (error) {
-            if (error.response.statusCode === 404) {
-                alert(error.response.message);
+            if (error.response.status === 404) {
+                alert("Username not found or wrong password");
             }
             history.push('/login');
         }
